@@ -1,7 +1,7 @@
 FROM alpine:3.13.2
 
 RUN apk add --no-cache duplicity py-boto docker-cli
-RUN echo '*/1 * * * * /bin/sh /app/backup.sh' >> /etc/crontabs/backup
+RUN echo '@daily /bin/sh /app/backup.sh' >> /etc/crontabs/backup
 RUN chmod 0644 /etc/crontabs/backup
 RUN crontab /etc/crontabs/backup
 WORKDIR /app
