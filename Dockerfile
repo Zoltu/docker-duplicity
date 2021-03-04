@@ -6,6 +6,7 @@ RUN chmod 0644 /etc/crontabs/backup
 RUN crontab /etc/crontabs/backup
 WORKDIR /app
 RUN echo 'duplicity ${SOURCE} ${DEST}' >> /app/backup.sh
+RUN echo 'duplicity ${DEST} ${SOURCE}' >> /app/restore.sh
 
 VOLUME /root/.cache/duplicity
 
